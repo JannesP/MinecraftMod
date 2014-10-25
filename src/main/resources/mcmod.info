@@ -1,0 +1,21 @@
+[
+{
+  "modid": "MinecraftMod",
+  "name": "Minecraft Test Mod",
+  "description": "Muhaha OP Mod",
+  "version": "0.1",
+  "mcversion": "1.7.10",
+  "url": "",
+  "updateUrl": "",
+  "authorList": [
+    "Jannes Peters"
+  ],
+  "credits": "",
+  "logoFile": "",
+  "screenshots": [
+  ],
+  "parent":"",
+  "dependencies": [
+  ]
+}
+]
