@@ -5,6 +5,6 @@ package com.jannespeters.minecraftmod.proxy;
  */
 public interface IProxy {
 
-
+    public void registerKeyBindings();
 
 }

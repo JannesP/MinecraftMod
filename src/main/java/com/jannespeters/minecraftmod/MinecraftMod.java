@@ -1,8 +1,10 @@
 package com.jannespeters.minecraftmod;
 
+import com.jannespeters.minecraftmod.client.handler.KeyInputEventHandler;
 import com.jannespeters.minecraftmod.handler.ConfigurationHandler;
 import com.jannespeters.minecraftmod.init.ModBlocks;
 import com.jannespeters.minecraftmod.init.ModItems;
+import com.jannespeters.minecraftmod.init.ModRecipes;
 import com.jannespeters.minecraftmod.proxy.IProxy;
 import com.jannespeters.minecraftmod.reference.Reference;
 import com.jannespeters.minecraftmod.utility.LogHelper;
@@ -29,16 +31,22 @@ public class MinecraftMod {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+
         FMLCommonHandler.instance().bus().register(new ConfigurationHandler()); //register Event Handler for Configuration changes
+
+        proxy.registerKeyBindings();
 
         ModItems.init();    //init Items
         ModBlocks.init();   //init Blocks
+        ModRecipes.init();  //init Recipes
 
         LogHelper.info("Pre Initialization Complete!");
     }
 
     @Mod.EventHandler
     public static void init(FMLInitializationEvent event) {
+
+        FMLCommonHandler.instance().bus().register(new KeyInputEventHandler()); //register Key Events
 
         LogHelper.info("Initialization Complete!");
     }
