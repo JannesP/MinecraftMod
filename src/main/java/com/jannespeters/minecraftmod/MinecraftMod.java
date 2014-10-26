@@ -1,9 +1,12 @@
 package com.jannespeters.minecraftmod;
 
 import com.jannespeters.minecraftmod.handler.ConfigurationHandler;
+import com.jannespeters.minecraftmod.init.ModBlocks;
+import com.jannespeters.minecraftmod.init.ModItems;
 import com.jannespeters.minecraftmod.proxy.IProxy;
 import com.jannespeters.minecraftmod.reference.Reference;
 import com.jannespeters.minecraftmod.utility.LogHelper;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
@@ -26,6 +29,10 @@ public class MinecraftMod {
     @Mod.EventHandler
     public static void preInit(FMLPreInitializationEvent event) {
         ConfigurationHandler.init(event.getSuggestedConfigurationFile());
+        FMLCommonHandler.instance().bus().register(new ConfigurationHandler()); //register Event Handler for Configuration changes
+
+        ModItems.init();    //init Items
+        ModBlocks.init();   //init Blocks
 
         LogHelper.info("Pre Initialization Complete!");
     }

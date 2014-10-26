@@ -7,7 +7,6 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraftforge.common.config.Configuration;
 
 import java.io.File;
-import java.io.IOException;
 
 /**
  * Created by Jannes Peters on 10/25/2014.
@@ -21,6 +20,7 @@ public class ConfigurationHandler {
         //Create config object from file
         if (configuration != null) {
             configuration = new Configuration(configFile);
+            loadConfiguration();
         }
 
     }
@@ -34,7 +34,7 @@ public class ConfigurationHandler {
         }
     }
 
-    public void loadConfiguration() {
+    private static void loadConfiguration() {
         //load properties
         LogHelper.info("Configuration loaded!");
         if (configuration.hasChanged()) {
